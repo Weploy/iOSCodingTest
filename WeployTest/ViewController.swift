@@ -3,21 +3,9 @@ import SnapKit
 import Alamofire
 import SwiftyJSON
 
-// Things that should not be changed:
-// - Do not change the use of JSON to store data and as a model for presentation.
-// - Do not use Storyboard or Interface Builder
-//
-// Apart from that, change everything that you feel is:
-// - buggy
-// - messy
-// - repetitive
-// - hard to understand/maintain
-//
-// This app is fully functional. You are not expected to change the functionality except for the bug fixing. Most of
-// the bugs are obvious and can be found just by using the app or by reading the code. Where it is not obvious,
-// we've put a TODO comment in the code to explain how that part of the code is supposed to function.
 class ViewController: UIViewController {
     private let urlField = UITextField()
+    private let currentTime = Date()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,19 +74,21 @@ class ViewController: UIViewController {
             let dateFormatterPrint = DateFormatter()
             dateFormatterPrint.dateFormat = "yyyy-MM-dd HH:mm:ss"
             
-            request["time"] = dateFormatterPrint.string(from: Date())
+            request["time"] = dateFormatterPrint.string(from: self.currentTime)
             request["status"] = response.response!.statusCode
 
-            if var requests = KeyValue.get("requests").array {
-                requests.insert(JSON(request), at: 0)
-                KeyValue.put("requests", JSON(requests))
-            }
-            else {
-                KeyValue.put("requests", JSON([request]))
-            }
-
             let alert = UIAlertController(title: "Success", message: "Click 'History' to view recorded requests", preferredStyle: UIAlertControllerStyle.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertActionStyle.default, handler: nil))
+            
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { handlerAction in
+                if var requests = KeyValue.get("requests").array {
+                    requests.insert(JSON(request), at: 0)
+                    KeyValue.put("requests", JSON(requests))
+                }
+                else {
+                    KeyValue.put("requests", JSON([request]))
+                }
+            }))
+            
             self.present(alert, animated: true, completion: nil)
         }
     }

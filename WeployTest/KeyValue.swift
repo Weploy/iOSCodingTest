@@ -29,14 +29,7 @@ public class KeyValue: Object {
     
     public static func get(_ key: String) -> JSON {
         if let row = row(key: key) {
-            let json = JSON(parseJSON: row.value)
-            
-            do {
-                _ = try json.rawData()
-                return json
-            } catch {  // E.g. a JSON that is just a standalone string value
-                return JSON(row.value)
-            }
+            return JSON(parseJSON: row.value)
         }
         return JSON(NSNull())
     }

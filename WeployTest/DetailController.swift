@@ -29,6 +29,7 @@ class DetailController: UIViewController {
         Method: GET
         Protocol: \(url!.scheme!)
         Host: \(url!.host!)
+        Path: \(url!.path)
         Status: \(request["status"])
         """
         
