@@ -1,0 +1,34 @@
+PODS:
+  - Alamofire (4.7.2)
+  - Realm (3.7.4):
+    - Realm/Headers (= 3.7.4)
+  - Realm/Headers (3.7.4)
+  - RealmSwift (3.7.4):
+    - Realm (= 3.7.4)
+  - SnapKit (4.0.0)
+  - SwiftyJSON (4.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.6)
+  - RealmSwift (~> 3.0)
+  - SnapKit (~> 4.0)
+  - SwiftyJSON (~> 4.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Realm
+    - RealmSwift
+    - SnapKit
+    - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
+  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+
+PODFILE CHECKSUM: 9232357fa976ca9330dc0857562c6043ec45aedb
+
+COCOAPODS: 1.5.2
